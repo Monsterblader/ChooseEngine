@@ -1,0 +1,15 @@
+<p>Greetings, Professor Falken.  Would you like to play a game?</p>
+<div>
+  <ul>
+    <li ng-repeat="passage in path">
+      <strong>Title:</strong> {{passage.title}}
+      <br />
+      <strong>Description:</strong> {{passage.description}}
+      <br />
+    </li>
+  </ul>
+  <div ng-repeat="choice in currentLocation.routes">
+    <a href="" id="{{$index}}" ng-click="addChoice(choice)">{{choice}} </a>
+  </div>
+  <span ng-hide="currentLocation.routes.length">You have reached the end.</span>
+</div>

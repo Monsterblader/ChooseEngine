@@ -1,0 +1,33 @@
+<p>Create a new passage</p>
+
+<form name="profileForm" ng-submit="addPassage()" novalidate>
+  <input type="text" ng-model="passageTitle" placeholder="Passage title" required />
+  <input type="text" ng-model="passageDescription" placeholder="Passage description" required />
+  <input type="text" ng-model="passageParent" placeholder="Coming from (use the index)" />
+  <input type="submit" id ="submit" value="New passage" />
+</form>
+
+<hr>
+
+<div>Passages</div>
+<ul class="passages">
+  <li ng-repeat="path in passages">
+    <div class="panel panel-default">
+      <h4>Passage #{{$index}}</h4>
+      <form name="profileForm" ng-submit="changePassage($index)" novalidate>
+        Title:
+        <input type="text" ng-model="path.title" placeholder="Passage title" required />
+        <br />
+        Description:
+        <input type="text" ng-model="path.description" placeholder="Passage description" required />
+        <br />
+        <span ng-show="$index">
+          Parent:
+          <input type="text" ng-model="path.parent" ng-change="newParent($index, {{path.parent}}, path.parent)" placeholder="Coming from (use the index)" />
+          <br />
+        </span>
+      </form>
+      <div>Choices: <span ng-repeat="link in path.routes">{{link}} </span><span ng-show="path.routes.length === 0">None</span></div>
+    </div>
+  </li>
+</ul>
